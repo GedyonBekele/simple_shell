@@ -38,15 +38,13 @@ int exec_command(ProgramData *program_data)
 					program_data->tokens, program_data->env);
 			if (calc_val == -1)/* if error when execve */
 				perror(program_data->command_name), exit(EXIT_FAILURE);
-				else/* parent, wait */
-				wait(status);
-				if (WIFEXITED)
-					(status)
-					errno = WEXITSTATUS(status);
-				else if (WIFSIGNALED(status))
-					errno = 128 + WTERMSIG(status);
 		}
+		else/* parent, wait */
+			wait(&status);
+		if ((WIFEXITED)(status))
+				errno = WEXITSTATUS(status);
+		else if (WIFSIGNALED(status))
+			errno = 128 + WTERMSIG(status);
 	}
 	return (0);
 }
-

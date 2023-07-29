@@ -17,7 +17,7 @@ char *env_get_key(char *key, ProgramData *program_data)
 	/* obtains the leng of the variable requested */
 	key_length = string_length(key);
 
-	for (i = 0; data->program_env[i]; i++)
+	for (i = 0; program_data->program_env[i]; i++)
 	{/* Iterates through the environ and check for coincidence of the vame */
 		if (string_compare(key, program_data->env[i], key_length) &&
 		 data->env[i][key_length] == '=')
