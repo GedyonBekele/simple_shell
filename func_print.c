@@ -46,25 +46,25 @@ int print_error_message(int errorcode, ProgramData *program_data)
 			print_to_stderr(": Illegal number: ");
 		else
 			print_to_stderr(": can't cd to ");
-		print_to_stderr(data->tokens[1]);
+		print_to_stderr(program_data->tokens[1]);
 		print_to_stderr("\n");
 	}
 	else if (errorcode == 127)
 	{
-		print_to_stderr(data->program_name);
+		print_to_stderr(program_data->program_name);
 		print_to_stderr(": ");
 		print_to_stderr(counter_as_string);
 		print_to_stderr(": ");
-		print_to_stderr(data->command_name);
+		print_to_stderr(program_data->command_name);
 		print_to_stderr(": not found\n");
 	}
 	else if (errorcode == 126)
 	{
-		print_to_stderr(data->program_name);
+		print_to_stderr(program_data->program_name);
 		print_to_stderr(": ");
 		print_to_stderr(counter_as_string);
 		print_to_stderr(": ");
-		print_to_stderr(data->command_name);
+		print_to_stderr(program_data->command_name);
 		print_to_stderr(": Permission denied\n");
 	}
 

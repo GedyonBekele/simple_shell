@@ -59,15 +59,15 @@ void expandAlias(ProgramData *program_data)
 	int i, j, wasExpanded = 0;
 	char line[BUFFER_SIZE] = {0}, expansion[BUFFER_SIZE] = {'\0'}, *temp;
 
-	if (programData->input_line == NULL)
+	if (program_data->input_line == NULL)
 		return;
-	bufferAdd(line, programData->input_line);
+	bufferAdd(line, program_data->input_line);
 	for (i = 0; line[i]; i++)
 	{
 		for (j = 0; line[i + j] && line[i + j] != ' '; j++)
 			expansion[j] = line[i + j];
 		expansion[j] = '\0';
-		temp = getAliasValue(programData, expansion);
+		temp = getAliasValue(program_data, expansion);
 		if (temp)
 		{
 			expansion[0] = '\0';
@@ -82,8 +82,8 @@ void expandAlias(ProgramData *program_data)
 	}
 	if (wasExpanded)
 	{
-		free(programData->input_line);
-		programData->input_line = string_duplicate(line);
+		free(program_data->input_line);
+		program_data->input_line = string_duplicate(line);
 	}
 }
 /**

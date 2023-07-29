@@ -74,6 +74,7 @@ char *custom_strtok(char *str, char *delimiters);
 char *func_strtok(char *input);
 
 /*func_exec*/
+int execute(ProgramData *program_data);
 int exec_command(ProgramData *program_data);
 
 /* func_getline */
@@ -111,7 +112,7 @@ int builtin_unset_env(ProgramData *program_data);
 /* func_print.c */
 int print_to_stdout(char *string);
 int print_to_stderr(char *string);
-int print_error_message(int errorcode, ProgramData);
+int print_error_message(int errorcode, ProgramData *program_data);
 
 
 /* func_free.c */
@@ -162,7 +163,7 @@ char *getEnvironmentValue(char *key, ProgramData *program_data);
 void print_environ(ProgramData *program_data);
 
 
-
+char *getAliasValue(ProgramData *program_data, char *alias);
 
 #endif
 

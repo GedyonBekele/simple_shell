@@ -33,18 +33,19 @@ int builtin_env(ProgramData *program_data)
 					print_to_stdout(program_data->tokens[1]);
 				string_reverse(str);
 					print_to_stdout("\n");
-				else
-					/* returns the old value of the variable */
-					setEnvironmentValue(var_name, var_copy, program_data);
-					free(var_copy);
-				return (0);
 			}
-			var_name[i] = program_data->tokens[1][i];
+			else
+				/* returns the old value of the variable */
+				setEnvironmentValue(var_name, var_copy, program_data);
+			free(var_copy);
+			return (0);
 		}
-		errno = 2;
-		perror(program_data->command_name);
-		errno = 127;
+		var_name[i] = program_data->tokens[1][i];
 	}
+	errno = 2;
+	perror(program_data->command_name);
+	errno = 127;
+
 	return (0);
 }
 

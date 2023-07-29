@@ -29,7 +29,7 @@ void free_all_data(ProgramData *program_data)
 	if (program_data->file_descriptor != 0)
 	{
 		if (close(program_data->file_descriptor) == -1)
-			perror(ProgramData->program_name);
+			perror(program_data->program_name);
 	}
 
 	free_recurrent_data(program_data);
